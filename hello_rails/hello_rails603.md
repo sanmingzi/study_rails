@@ -3,7 +3,7 @@
 ## 基于mysql创建项目
 
 ```
-rails new hello_rails -d mysql --skip-bundle
+rails new hello_rails -d mysql --skip-bundle --skip-webpack-install
 ```
 
 ## 修改Gemfile
