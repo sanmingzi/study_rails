@@ -52,4 +52,4 @@ ENV=development bundle exec rails db:migrate
 ENV=development bundle exec rails s -b 0.0.0.0 -p 3000
 ```
 
-访问 [localhost:3000](localhost:3000) 应该就能看到index页面了。
+访问 [localhost:3000](http://localhost:3000) 应该就能看到index页面了。
