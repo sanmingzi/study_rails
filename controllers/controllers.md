@@ -2,6 +2,11 @@
 
 - [action_controller](https://guides.rubyonrails.org/action_controller_overview.html)
 
+```
+bundle exec rails generate controller users
+bundle exec rails destroy controller users
+```
+
 ## 命名规范
 
 ```
