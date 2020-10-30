@@ -2,6 +2,7 @@
 
 - [Session](https://guides.rubyonrails.org/action_controller_overview.html#session)
 - [Cookie](https://guides.rubyonrails.org/action_controller_overview.html#cookies)
+- [Cookie-阮一峰](https://www.gobeta.net/books/ruanyf-javascript-tutorial/bom/cookie/)
 
 ## Accessing the Session
 
@@ -57,4 +58,15 @@ end
     <!-- more content -->
   </body>
 </html>
+```
+
+## Cookie
+
+
+```
+当浏览器向服务器发起请求，会收到一个 response。在这个 response 的头部有一个字段 Set-Cookie。
+
+Set-Cookie:test_key=test_value
+
+那么浏览器就会存储一个名为 test_key 的 cookie，其值为 test_value。
 ```
