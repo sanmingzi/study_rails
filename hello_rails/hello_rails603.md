@@ -1,5 +1,18 @@
 # 使用rails603创建新项目
 
+## yarn
+
+```
+rails6 默认使用 yarn 作为包管理工具，使用 webpack 作为打包工具。
+所以在使用 rails6 前，需要在机器上安装 yarn 以及 webpack。
+```
+
+```Dockerfile
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+apt update && apt install -y yarn && \
+```
+
 ## 基于mysql创建项目
 
 ```
