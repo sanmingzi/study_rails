@@ -24,16 +24,16 @@ yarn add popper.js # 此为 bootstrap 的依赖包
 
 ## 引入 bootstrap
 
-- application.css
-
 ```css
+/* application.css */
+
  *= require bootstrap/dist/css/bootstrap
  *= require_tree .
  *= require_self
 ```
 
-- application.js
-
 ```js
+// application.js
+
 require("bootstrap");
 ```
