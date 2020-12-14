@@ -40,6 +40,9 @@ ERROR:  Unknown column 'packages.name'
 
 ## includes
 
+- [includes](https://apidock.com/rails/ActiveRecord/QueryMethods/includes)
+- [references](https://apidock.com/rails/ActiveRecord/QueryMethods/references)
+
 - 基本用法
 
 ```ruby
@@ -52,21 +55,20 @@ SELECT `packages`.* FROM `packages` WHERE `packages`.`package_type_id` IN (1, 2,
 - 条件查询
 
 ```ruby
-PackageType.includes(:packages).where("name = 'jackpot'")
+class Permission < ApplicationRecord
+  belongs_to :action
+end
 
-SELECT `package_types`.* FROM `package_types` WHERE (name = 'jackpot')
-SELECT `packages`.* FROM `packages` WHERE `packages`.`package_type_id` IN (5)
+class Action < ApplicationRecord
+  has_many :permissions
+end
 ```
 
-- 子条件查询
-
 ```ruby
-PackageType.includes(:packages).where("packages.name = 'jackpot'")
+Action.includes(:permissions).where("permissions.status = 0").references(:permissions)
+Permission.includes(:action).where("actions.name = 'create'").references(:actions)
 
-SELECT `package_types`.*, `packages`.* FROM `package_types` LEFT OUTER JOIN `packages` ON `packages`.`package_type_id` = `package_types`.`id` WHERE (packages.name = 'jackpot')
-
-在preload中用这种写法是语法错误，因为preload无法使用子条件查询
-但是如果是includes的话，则只会生成一条SQL语句
+includes 可以添加查询条件在 included model 中，但是必须使用 references 。
 ```
 
 ## eager_load
@@ -102,9 +104,11 @@ PackageType.joins(:packages).select('distinct package_types.*')
 ```ruby
 preload 会根据查询对象的数目生成多条 SQL。但是 preload 的条件查询只能应用在第一级对象上
 
+如果条件查询应用在第一级对象上，includes 的表现同 preload 一致；如果条件查询不是针对第一级对象的话，必须配合 references 使用
+
 eager_load 会使用 LEFT OUT JOIN 生成一条 SQL 语句来查询所有的结果
 
-如果条件查询应用在第一级对象上，includes 的表现同 preload 一致；如果条件查询不是针对第一级对象的话，includes 的表现同 eager_load 一致
+在做联合查询的时候，eager_load 比 [preload, includes] 更好用
 
 joins 使用 INNER JOIN 来查询第一级对象的数据，容易造成 n + 1 查询问题。如果父对象和子对象是一对多的关系还会出现重复的数据。
 
