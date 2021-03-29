@@ -23,7 +23,7 @@ end
 
 # This will create a table roles_permissions
 # with two column role_id / permission_id
-create_join_table :permissions, :roles do |t|
+create_join_table :roles, :permissions, table_name: :roles_permissions do |t|
 end
 
 change_talbe :roles do |t|
@@ -43,6 +43,17 @@ add_foreign_key :articles, :authors
 remove_foreign_key :articles, :authors
 remove_foreign_key :articles, column: :author_id
 remove_foreign_key :articles, name: :fk_rails_author_id
+```
+
+- uniq index
+
+```ruby
+create_table :roles do |t|
+  t.string :name, index: { unique: true }, null: false
+end
+
+add_index :table_name, :column_name, unique: true
+add_index :table_name, [:column_name_a, :column_name_b], unique: true
 ```
 
 - up / down

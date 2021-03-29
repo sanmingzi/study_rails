@@ -221,7 +221,7 @@ absence 和 presence 恰好相反，其使用的是 present? 方法；
 ```ruby
 class Role < ApplicationRecord
   attr_accessor :name, :email
-  
+
   validates :name, presence: true
   validates :email, absence: true
 end
@@ -248,7 +248,7 @@ end
 ```ruby
 class Role < ApplicationRecord
   attr_accessor :name, :year, :month
-  
+
   validates :name, uniqueness: {scope: [:year, :month], case_sensitive: false, message: 'should happen once per year per month'}
 end
 ```
@@ -408,7 +408,7 @@ role.valid? # false
 <% if @article.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
- 
+
     <ul>
     <% @article.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
