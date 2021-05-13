@@ -1,14 +1,6 @@
 # Feature Test
 
-```
-Feature test 我理解为场景测试。
-这种测试一般会对某些场景进行模拟，比如注册、登录等。
-这种测试会包含多个操作，比如 fill / click 等。
-这种测试还经常会需要执行 js 等。
-我们可以在测试机器上启动 browser，然后向该 browser 发送测试指令，browser 再向服务器发送请求。
-当我们在使用 docker 的时候，很可能测试机器上并没有安装 browser，甚至有可能无法正确启动 browser。
-这个时候我们可以使用远程 browser 来进行测试。
-```
+Feature test 我理解为场景测试。这种测试一般会对某些场景进行模拟，比如注册、登录等。这种测试会包含多个操作，比如 fill / click 等。这种测试还经常会需要执行 js 等。我们可以在测试机器上启动 browser，然后向该 browser 发送测试指令，browser 再向服务器发送请求。当我们在使用 docker 的时候，很可能测试机器上并没有安装 browser，甚至有可能无法正确启动 browser。这个时候我们可以使用远程 browser 来进行测试。
 
 ![remote browser](remote_browser.drawio.png)
 
