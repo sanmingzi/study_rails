@@ -25,6 +25,6 @@ Cross-Site Request Forgery ，跨站伪造请求。
 1. 浏览器访问网站 A ，并且进行登录，此时浏览器中的 cookie 会保存登录网站 A 的相关信息
 2. 接着访问了一个有问题的网站 B ，B 会返回 HTML 给浏览器，但是会夹带私货。比如会有 \<img\> 之类浏览器自动载入的标签，而且其中内嵌了用来攻击网站 A 的 URL 。这就是典型的 CSRF 。
 
-下面这份文档展示了 rails 是如何放置 CSRF 攻击的。
+下面这份文档展示了 rails 是如何防止 CSRF 攻击的。
 
 [CSRF](./rails_csrf.md)
