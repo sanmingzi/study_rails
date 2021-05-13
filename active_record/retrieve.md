@@ -4,6 +4,8 @@
 
 ## find
 
+- [find api](https://api.rubyonrails.org/v6.1.3.1/classes/ActiveRecord/FinderMethods.html#method-i-find)
+
 ```ruby
 Order.find(1)
 Order.find([1, 2])

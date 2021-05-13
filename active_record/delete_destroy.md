@@ -1,5 +1,8 @@
 # Active Record Delete vs Destroy
 
+- [delete api](https://api.rubyonrails.org/v3.1/classes/ActiveRecord/Relation.html#method-i-delete)
+- [destroy api](https://api.rubyonrails.org/v3.1/classes/ActiveRecord/Relation.html#method-i-destroy)
+
 ```ruby
 # delete & delete_all
 Order.delete(1)
