@@ -1,27 +1,15 @@
 # Controller
 
-- [action_controller](https://guides.rubyonrails.org/action_controller_overview.html)
+- [rails guide action_controller](https://guides.rubyonrails.org/action_controller_overview.html)
 
-```
+```bash
 bundle exec rails generate controller users
 bundle exec rails destroy controller users
 ```
 
 ## 命名规范
 
-```
-复数命名：ClientsController / SiteAdminsController
-
-但也不绝对是的，比如 ApplicationController
-```
-
-```ruby
-ClientsController < ApplicationController
-  def new
-    @client = Client.new
-  end
-end
-```
+复数命名：ClientsController / SiteAdminsController 。但也不绝对是的，比如 ApplicationController
 
 ## Parameters
 
@@ -84,9 +72,9 @@ end
 ```ruby
 class ApplicationController < ActionController::Base
   before_action :require_login
- 
+
   private
- 
+
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access this section"
@@ -130,9 +118,9 @@ send_file
 ```ruby
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
- 
+
   private
- 
+
     def record_not_found
       render plain: "404 Not Found", status: 404
     end
@@ -142,24 +130,24 @@ end
 ```ruby
 class ApplicationController < ActionController::Base
   rescue_from User::NotAuthorized, with: :user_not_authorized
- 
+
   private
- 
+
     def user_not_authorized
       flash[:error] = "You don't have access to this section."
       redirect_back(fallback_location: root_path)
     end
 end
- 
+
 class ClientsController < ApplicationController
   before_action :check_authorization
- 
+
   def edit
     @client = Client.find(params[:id])
   end
- 
+
   private
- 
+
     def check_authorization
       raise User::NotAuthorized unless current_user.admin?
     end

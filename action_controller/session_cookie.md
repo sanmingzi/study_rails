@@ -1,14 +1,14 @@
 # Session & Cookie
 
-- [Session](https://guides.rubyonrails.org/action_controller_overview.html#session)
-- [Cookie](https://guides.rubyonrails.org/action_controller_overview.html#cookies)
+- [rails guide Session](https://guides.rubyonrails.org/action_controller_overview.html#session)
+- [rails guide Cookie](https://guides.rubyonrails.org/action_controller_overview.html#cookies)
 - [Cookie-阮一峰](https://www.gobeta.net/books/ruanyf-javascript-tutorial/bom/cookie/)
 
 ## Accessing the Session
 
 ```ruby
 class ApplicationController < ActionController::Base
- 
+
   private
 
   def current_user
@@ -61,7 +61,6 @@ end
 ```
 
 ## Cookie
-
 
 ```
 当浏览器向服务器发起请求，会收到一个 response。在这个 response 的头部有一个字段 Set-Cookie。
