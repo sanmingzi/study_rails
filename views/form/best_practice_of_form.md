@@ -8,19 +8,19 @@
 ```ruby
 # config/application.rb
 
-config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+config.action_view.field_error_proc = Proc.new { |html_tag, instance|
   html_tag
 }
 ```
 
-```ruby
-在默认情况下，如果 model validation 出错的话，rails 会自动给 html tag 加上一个 div。
+在默认情况下，如果 model validation 出错的话，rails 会自动给 html tag 加上一个 div。有时候正是加了这个 div，可能会导致我们的页面样式出错，所以我们可以在 application.rb 中重写这个方法，将该功能禁用掉。
 
-@@field_error_proc = Proc.new{ |html_tag, instance| 
+```ruby
+# 默认添加了 div
+
+@@field_error_proc = Proc.new{ |html_tag, instance|
   "<div class=\"field_with_errors\">#{html_tag}</div>".html_safe
 }
-
-有时候正是加了这个 div，可能会导致我们的页面样式出错，所以我们可以在 application.rb 中重写这个方法，将该功能禁用掉。
 ```
 
 ## form_helper
@@ -76,9 +76,6 @@ end
 ```
 form = [form_group_0, form_group_1...] + input_submit
 form_group = label + input + div_error_message
-
-一个表单由一个或多个 form_group 组成
-而一个 form_group 是由一个可选的 label + 输入框 input + 包含 error message 的 div 组成
-
-我们将 form_group 封装起来可以少写很多重复的代码，并且能够保持 form 的一致性
 ```
+
+一个表单由一个或多个 form_group 组成。而一个 form_group 是由一个可选的 label + 输入框 input + 包含 error message 的 div 组成。我们将 form_group 封装起来可以少写很多重复的代码，并且能够保持 form 的一致性。

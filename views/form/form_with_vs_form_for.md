@@ -71,10 +71,7 @@ Rails 5.1 中添加了 form_with 方法来帮助用户创建表单。
 
 - data-remote
 
-```
-从生成的 HTML 可以看出 form_with 默认 data-remote: true。
-如果我们想改变这个值，可以设置 local: true。
-```
+从生成的 HTML 可以看出 form_with 默认 data-remote: true。如果我们想改变这个值，可以设置 local: true。
 
 - scope prefix
 
@@ -92,10 +89,7 @@ Rails 5.1 中添加了 form_with 方法来帮助用户创建表单。
 </form>
 ```
 
-```
-scope 选项可以作为每个 input field 的前缀。
-如果我们使用的是 form_tag 的话，需要在每一个 input 前面手动添加前缀名。
-```
+scope 选项可以作为每个 input field 的前缀。如果我们使用的是 form_tag 的话，需要在每一个 input 前面手动添加前缀名。
 
 - input fields 可以不和 model attributes 对应
 
@@ -115,18 +109,11 @@ scope 选项可以作为每个 input field 的前缀。
 </form>
 ```
 
-```
-我们在上述代码中添加了一个 check_box。很显然，这个 check_box 并不是 post 的属性。
-这个 check_box 的意思是，当作者在创建了一个 post 的时候，是否需要通知读者。
-input fields 和 attributes 不完全匹配的好处给了开发者更多的空间。
-```
+我们在上述代码中添加了一个 check_box。很显然，这个 check_box 并不是 post 的属性。这个 check_box 的意思是，当作者在创建了一个 post 的时候，是否需要通知读者。input fields 和 attributes 不完全匹配的好处给了开发者更多的空间。
 
 - 不会自动额外添加 ids / classes
 
-```
-form_for 和 form_tag 会为 input 添加额外的 id。form_for 甚至会为表单自动添加一些 class。
-form_with 不会这样做，开发者需要自己定义组件的 id 和 class。
-```
+form_for 和 form_tag 会为 input 添加额外的 id。form_for 甚至会为表单自动添加一些 class。form_with 不会这样做，开发者需要自己定义组件的 id 和 class。
 
 - html 选项
 
@@ -136,7 +123,4 @@ form_with 不会这样做，开发者需要自己定义组件的 id 和 class。
 <%= form_with model: @post, id: "custom-id", class: "custom-class" do |form| %>
 ```
 
-```
-form_for 和 form_tag 通过 html 选项来添加组件的属性，比如 id / class 等。
-form_with 可以直接将 id / class 添加在一级选项中。
-```
+form_for 和 form_tag 通过 html 选项来添加组件的属性，比如 id / class 等。form_with 可以直接将 id / class 添加在一级选项中。
