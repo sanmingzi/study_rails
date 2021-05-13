@@ -109,13 +109,7 @@ end
 # undefined method `method_injected_by_foo' for Host:Class (NoMethodError)
 ```
 
-```m
-但是，这种写法是错误的。
-我们在 Bar 模块中引入依赖 Foo，此时会触发 Foo 的回调函数 included，
-而此时的 base = Bar，接下来的 base.class_eval 会在 Bar 内部注入了一个 class method，
-而 module 内部的 class method 不会 mix 到父类中去，
-所以最终 Host 内没有 method_injected_by_foo 函数。
-```
+但是，这种写法是错误的。我们在 Bar 模块中引入依赖 Foo，此时会触发 Foo 的回调函数 included，而此时的 base = Bar，接下来的 base.class_eval 会在 Bar 内部注入了一个 class method，而 module 内部的 class method 不会 mix 到父类中去，所以最终 Host 内没有 method_injected_by_foo 函数。
 
 - 使用 concern 解决依赖问题
 
@@ -140,7 +134,7 @@ module Bar
 
   included do
     puts self.inspect
-    
+
     self.method_injected_by_foo
   end
 end
