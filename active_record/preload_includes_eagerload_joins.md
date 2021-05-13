@@ -2,7 +2,6 @@
 
 - https://blog.bigbinary.com/2013/07/01/preload-vs-eager-load-vs-joins-vs-includes.html
 
-
 ## preload
 
 - 基本用法
@@ -101,17 +100,13 @@ PackageType.joins(:packages).select('distinct package_types.*')
 
 ## 总结
 
+- preload 会根据查询对象的数目生成多条 SQL。但是 preload 的条件查询只能应用在第一级对象上
+- 如果条件查询应用在第一级对象上，includes 的表现同 preload 一致；如果条件查询不是针对第一级对象的话，必须配合 references 使用
+- eager_load 会使用 LEFT OUT JOIN 生成一条 SQL 语句来查询所有的结果
+- 在做联合查询的时候，eager_load 比 [preload, includes] 更好用
+- joins 使用 INNER JOIN 来查询第一级对象的数据，容易造成 n + 1 查询问题。如果父对象和子对象是一对多的关系还会出现重复的数据。
+
 ```ruby
-preload 会根据查询对象的数目生成多条 SQL。但是 preload 的条件查询只能应用在第一级对象上
-
-如果条件查询应用在第一级对象上，includes 的表现同 preload 一致；如果条件查询不是针对第一级对象的话，必须配合 references 使用
-
-eager_load 会使用 LEFT OUT JOIN 生成一条 SQL 语句来查询所有的结果
-
-在做联合查询的时候，eager_load 比 [preload, includes] 更好用
-
-joins 使用 INNER JOIN 来查询第一级对象的数据，容易造成 n + 1 查询问题。如果父对象和子对象是一对多的关系还会出现重复的数据。
-
 Role.create(id: 1, name: 'role1')
 Role.create(id: 2, name: 'role2')
 Permission.create(id: 1, name: 'permission1', action: '', resource: '')

@@ -1,6 +1,6 @@
 # Rails Active Record Validations
 
-- [active_record_validations](https://guides.rubyonrails.org/active_record_validations.html)
+- [rails guide active_record validations](https://guides.rubyonrails.org/active_record_validations.html)
 
 ## Trigger Validations
 
@@ -69,12 +69,7 @@ role.errors.details[:name]
 
 - acceptance
 
-```
-当表单提交时，用于校验 checkbox 是否被选中。最常见的场景就是用户同意服务条款；
-该字段一般来讲是 virtual attribute，数据库中一般不存储；
-只有当被校验的字段不为 nil 的时候，该校验才会生效；
-可以自定义 error message，以及该字段的 accept value；
-```
+当表单提交时，用于校验 checkbox 是否被选中。最常见的场景就是用户同意服务条款；该字段一般来讲是 virtual attribute，数据库中一般不存储；只有当被校验的字段不为 nil 的时候，该校验才会生效；可以自定义 error message，以及该字段的 accept value；
 
 ```ruby
 class Role < ApplicationRecord
@@ -96,10 +91,7 @@ role.valid?
 
 - confirmation
 
-```
-这个校验主要用来确认输入是否一致。最常见的场景就是密码的重复确认；
-下面的代码以 email confirm 为例，其中 email 是 model 真实的 attribute，email_confirmation 是生成的一个 virtual attribute；
-```
+这个校验主要用来确认输入是否一致。最常见的场景就是密码的重复确认；下面的代码以 email confirm 为例，其中 email 是 model 真实的 attribute，email_confirmation 是生成的一个 virtual attribute；
 
 ```ruby
 class Role < ApplicationRecord
@@ -120,10 +112,7 @@ role.valid?
 
 - inclusion / exclusion
 
-```
-如果 inclusion 中没有 nil 和 ''，但是 value = nil / ''，校验失败；
-如果exclusion 中没有 nil 和 ''，但是 value = nil / ''，校验成功；
-```
+如果 inclusion 中没有 nil 和 ''，但是 value = nil / ''，校验失败；如果exclusion 中没有 nil 和 ''，但是 value = nil / ''，校验成功；
 
 ```ruby
 class Role < ApplicationRecord
@@ -213,10 +202,7 @@ even:
 
 - presence / absence
 
-```
-presence 用来校验某个属性不为 nil / false, 且不为空，其使用的是 blank? 方法；
-absence 和 presence 恰好相反，其使用的是 present? 方法；
-```
+presence 用来校验某个属性不为 nil / false, 且不为空，其使用的是 blank? 方法；absence 和 presence 恰好相反，其使用的是 present? 方法；
 
 ```ruby
 class Role < ApplicationRecord
@@ -253,10 +239,7 @@ class Role < ApplicationRecord
 end
 ```
 
-```
-scope 后面可以接多个 attribute，有点类似联合唯一索引；
-case_sensitive: false 表示不区分大小写；
-```
+scope 后面可以接多个 attribute，有点类似联合唯一索引；case_sensitive: false 表示不区分大小写；
 
 ## Common Validation Options
 

@@ -26,12 +26,13 @@ The main difference between both usages is that `bad` is evaluated when the clas
 class Post < ActiveRecord::Base
   scope :by_status, -> (status) { where('status>= ?', status) }
 end
-
 ```
 
 ## Extensible
 
 ## Merge
+
+- [merge api](https://apidock.com/rails/ActiveRecord/SpawnMethods/merge)
 
 ```ruby
 class Subscription

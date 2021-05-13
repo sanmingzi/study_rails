@@ -26,7 +26,7 @@ end
 create_join_table :roles, :permissions, table_name: :roles_permissions do |t|
 end
 
-change_talbe :roles do |t|
+change_table :roles do |t|
   t.remove :name, :status # remove two column
   t.string :name # create column name
   t.rename :admin, :is_admin # rename column
@@ -65,7 +65,7 @@ class CreateRoles < ActiveRecord::Migration[5.0]
       t.string :name
     end
   end
- 
+
   def down
     drop_table :roles
   end
@@ -103,8 +103,4 @@ Role.create(name: 'test', is_admin: false)
 
 ```ruby
 bundle exec rails db:seed RAILS_ENV=development
-```
-
-```
-We can use seed, it is useful to init the database.
 ```

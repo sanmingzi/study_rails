@@ -1,6 +1,6 @@
 # 基础
 
-- [active_record_basics](https://guides.rubyonrails.org/active_record_basics.html)
+- [rails guide active_record](https://guides.rubyonrails.org/active_record_basics.html)
 
 ## 命名约定
 
@@ -62,8 +62,6 @@ role = Role.find_by(name: 'admin')
 role = Role.where(name: 'admin')
 ```
 
-[find vs find_by vs where](rails_find_find_by_where.md)
-                             
 ## Update
 
 ```ruby
@@ -89,12 +87,7 @@ Role.destroy_by(name: 'test')
 Role.destroy_all
 ```
 
-```
-model 的类方法 destroy_by / destroy_all 会先 SELECT 所有的满足条件的 record，
-然后会删除这些 record one by one，所以这两个批量方法会比较慢。
-感觉可以尝试使用 truncate。
-另外，最好不要删除数据库中的数据，我们可以通过 status 来标记 record 是否已经删除。
-```
+最好不要删除数据库中的数据，我们可以通过 status 来标记 record 是否已经删除。
 
 ## Validations
 
